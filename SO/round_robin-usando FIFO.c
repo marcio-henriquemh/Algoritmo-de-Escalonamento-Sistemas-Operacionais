@@ -43,6 +43,30 @@ void verificando_fila_cheia(Processo fila[], int n) {
     }
 }
 
+
+void adicionando_processo(Processo fila[], int *n) {
+    if(*n >= MAX) {
+        printf("Fila cheia! Não é possível adicionar mais processos.\n");
+        return;
+    }
+    fila[*n].id = *n + 1;
+    printf("Informe o tempo de execucao do processo %d: ", fila[*n].id);
+    scanf("%d", &fila[*n].tempo_execucao);
+    fila[*n].tempo_restante = fila[*n].tempo_execucao;
+    (*n)++;
+}
+
+void removendo_processo(Processo fila[], int *n) {
+    if(*n <= 0) {
+        printf("Fila vazia! Não há processos para remover.\n");
+        return;
+    }
+    printf("Removendo processo %d da fila.\n", fila[0].id);
+    for(int i = 1; i < *n; i++) {
+        fila[i - 1] = fila[i];
+    }
+    (*n)--;
+}
    int main() {
        Processo fila[MAX];
        int quantum;
