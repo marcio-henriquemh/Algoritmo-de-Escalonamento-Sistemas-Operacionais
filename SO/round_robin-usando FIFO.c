@@ -35,6 +35,14 @@ void verificando_fila_vazia(Processo fila[], int n) {
     exit(0);
 }
 
+void verificando_fila_cheia(Processo fila[], int n) {
+    for(int i = 0; i < n; i++) {
+        if(fila[i].tempo_restante == 0) {
+            printf("Processo %d concluído e removido da fila.\n", fila[i].id);
+        }
+    }
+}
+
    int main() {
        Processo fila[MAX];
        int quantum;
